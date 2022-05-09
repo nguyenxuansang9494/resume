@@ -1,15 +1,49 @@
 const input = document.getElementById("input");
 const executedCommand = document.getElementById("executed-commands");
 const label = "recruiter@sangnguyenresume [~] $ ";
+
+const parse = (aString) => {
+  return aString.split(label)[1];
+};
+
+const displayResult = (content) => {
+  let a = document.createElement("a");
+  a.innerHTML = content;
+  a.style.display = "block";
+  executedCommand.append(a);
+};
+
+const getCommand = (command) => {
+  switch (command) {
+    case "clear":
+      return () => {
+        executedCommand.innerHTML = "";
+      };
+    case "help":
+      return () => {
+        return displayResult("why don't try neofetch?");
+      };
+    case "neofetch":
+      return () => {
+        displayResult("Name: Sang Xuan Nguyen");
+      };
+    case "":
+      return () => {};
+    default:
+      return () => {
+        return displayResult("Invalid command.");
+      };
+  }
+};
+
 document.addEventListener("click", (e) => {
   input.focus();
   if (input.selectionStart < label.length) {
     input.selectionStart = label.length;
   }
 });
+
 document.addEventListener("keydown", (e) => {
-  console.info(e.key);
-  console.info(input.selectionStart);
   if (
     (input.value == label && e.key == "Backspace") ||
     input.selectionStart < label.length
@@ -17,30 +51,8 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
   } else if (e.key == "Enter") {
     e.preventDefault();
-    let a = document.createElement("a");
-    a.innerHTML = input.value;
-    a.style.display = "block";
-    executedCommand.append(a);
+    displayResult(input.value);
     getCommand(parse(input.value))();
     input.value = label;
   }
 });
-
-const parse = (aString) => {
-  return aString.split(label)[1];
-};
-
-const getCommand = (command) => {
-  if (command == "clear") {
-    return () => {
-      executedCommand.innerHTML = "";
-    };
-  } else {
-    return () => {
-      let a = document.createElement("a");
-      a.innerHTML = "invalid command.";
-      a.style.display = "block";
-      executedCommand.append(a);
-    };
-  }
-};
