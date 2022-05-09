@@ -1,0 +1,18 @@
+#playground {
+  background-color: #000000;
+}
+
+#input {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  padding: 0;
+}
+
+.text-format {
+  font-family: "Courier New", Courier, monospace;
+  font-size: large;
+  background-color: #000000;
+  color: #ffffff;
+}
