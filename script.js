@@ -2,15 +2,13 @@ const input = document.getElementById("input");
 const executedCommand = document.getElementById("executed-commands");
 const label = "recruiter@sangnguyenresume [~] $ ";
 
-const parse = (aString) => {
-  return aString.split(label)[1];
-};
-
 const displayResult = (content) => {
-  let a = document.createElement("a");
-  a.innerHTML = content;
-  a.style.display = "block";
-  executedCommand.append(a);
+  let p = document.createElement("p");
+  p.innerHTML = content;
+  p.style.display = "block";
+  p.style.marginBottom = "2px";
+  p.style.marginTop = "0px";
+  executedCommand.append(p);
 };
 
 const getCommand = (command) => {
@@ -27,6 +25,11 @@ const getCommand = (command) => {
       return () => {
         displayResult("Name: Sang Xuan Nguyen");
       };
+    case "exit":
+      return () => {
+        displayResult("logout.");
+        input.remove();
+      };
     case "":
       return () => {};
     default:
@@ -36,23 +39,15 @@ const getCommand = (command) => {
   }
 };
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click", () => {
   input.focus();
-  if (input.selectionStart < label.length) {
-    input.selectionStart = label.length;
-  }
 });
 
-document.addEventListener("keydown", (e) => {
-  if (
-    (input.value == label && e.key == "Backspace") ||
-    input.selectionStart < label.length
-  ) {
+input.addEventListener("keydown", (e) => {
+  if (e.key == "Enter") {
     e.preventDefault();
-  } else if (e.key == "Enter") {
-    e.preventDefault();
-    displayResult(input.value);
-    getCommand(parse(input.value))();
-    input.value = label;
+    displayResult(`${label + " " + input.value}`);
+    getCommand(input.value)();
+    input.value = "";
   }
 });
