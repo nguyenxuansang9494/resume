@@ -1,9 +1,19 @@
 const input = document.getElementById("input");
 const executedCommand = document.getElementById("executed-commands");
 const label = "recruiter@sangnguyenresume [~] $ ";
+document.addEventListener("click", (e) => {
+  input.focus();
+  if (input.selectionStart < label.length) {
+    input.selectionStart = label.length;
+  }
+});
 document.addEventListener("keydown", (e) => {
   console.info(e.key);
-  if (input.value == label && e.key == "Backspace") {
+  console.info(input.selectionStart);
+  if (
+    (input.value == label && e.key == "Backspace") ||
+    input.selectionStart < label.length
+  ) {
     e.preventDefault();
   } else if (e.key == "Enter") {
     e.preventDefault();
