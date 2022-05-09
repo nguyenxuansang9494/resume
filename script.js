@@ -1,4 +1,5 @@
 const input = document.getElementById("input");
+const inputGroup = document.getElementById("input-group");
 const executedCommand = document.getElementById("executed-commands");
 const label = "recruiter@sangnguyenresume [~] $ ";
 
@@ -28,7 +29,7 @@ const getCommand = (command) => {
     case "exit":
       return () => {
         displayResult("logout.");
-        input.remove();
+        inputGroup.remove();
       };
     case "":
       return () => {};

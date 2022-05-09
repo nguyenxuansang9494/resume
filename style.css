@@ -4,10 +4,9 @@
 
 #input {
   border: none;
-  overflow: auto;
   outline: none;
-  resize: none;
   padding: 0;
+  width: 70%;
 }
 
 #label {
@@ -15,7 +14,7 @@
   margin-top: 2px;
 }
 
-#input-groups {
+#input-group {
   padding: 0;
 }
 
