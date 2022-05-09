@@ -36,10 +36,6 @@ const getCommand = (command) => {
         displayResult("logout.");
         inputGroup.remove();
       };
-    case "poweroff":
-      return () => {
-        window.close();
-      };
     case "":
       return () => {};
     default:
