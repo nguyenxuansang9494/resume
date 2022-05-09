@@ -2,6 +2,7 @@ const input = document.getElementById("input");
 const inputGroup = document.getElementById("input-group");
 const executedCommand = document.getElementById("executed-commands");
 const label = "recruiter@sangnguyenresume [~] $ ";
+let workingDirectory = "/home/resume";
 
 const displayResult = (content) => {
   let p = document.createElement("p");
@@ -25,6 +26,10 @@ const getCommand = (command) => {
     case "neofetch":
       return () => {
         displayResult("Name: Sang Xuan Nguyen");
+      };
+    case "pwd":
+      return () => {
+        displayResult(workingDirectory);
       };
     case "exit":
       return () => {
