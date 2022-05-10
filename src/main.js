@@ -8,7 +8,7 @@
 //   displayResult,
 // } from "./modules/ui/render.js";
 
-import { init } from "./modules/util/initiator.js";
+import { init } from "./modules/initiator.js";
 
 // import { execute } from "./modules/command/executor.js";
 

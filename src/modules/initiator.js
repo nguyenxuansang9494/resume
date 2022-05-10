@@ -6,10 +6,10 @@ import {
   labelString,
   playground,
   displayResult,
-} from "../ui/render.js";
+} from "./ui/render.js";
 
-import { execute } from "../command/executor.js";
-import { navigate } from "../handler/navigator.js";
+import { execute } from "./command/executor.js";
+import { navigate } from "./handler/navigator.js";
 
 export const init = () => {
   window.addEventListener("load", () => {
@@ -17,7 +17,7 @@ export const init = () => {
     inputGroup.append(label, input);
     playground.append(executedCommands, inputGroup);
     app.append(playground);
-    displayResult(executedCommands, "Try help command for more details.");
+    displayResult(executedCommands, 'Try "help" command for more details.'); // welcome message
     displayResult(executedCommands, "...");
   });
 
