@@ -1,5 +1,5 @@
 const labelString =
-  "<span style='font-weight: bold;'>recruiter@sangnguyenresume [~] $ </span>";
+  "<span style='font-weight: bold;'>recruiter@sangnguyenresume [~] $</span>";
 let workingDirectory = "/home/resume";
 const playground = document.createElement("div");
 playground.id = "playground";
@@ -13,13 +13,14 @@ label.id = "label";
 label.className = "text-format";
 label.innerHTML = labelString;
 const input = document.createElement("div");
+input.style.marginLeft = "10px";
 input.id = "input";
 input.contentEditable = true;
 input.className = "text-format";
 
 window.addEventListener("load", () => {
   const app = document.getElementById("app");
-  inputGroup.append(label,input);
+  inputGroup.append(label, input);
   playground.append(executedCommands, inputGroup);
   app.append(playground);
 });
