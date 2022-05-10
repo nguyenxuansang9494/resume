@@ -27,11 +27,6 @@ const getCommand = (command) => {
       return () => {
         displayResult(workingDirectory);
       };
-    case "exit":
-      return () => {
-        displayResult("logout.");
-        inputGroup.remove();
-      };
     case "":
       return () => {};
     default:
