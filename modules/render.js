@@ -1,5 +1,6 @@
-export const labelString =
-  "<span id='label-string'><span id='label-user'>recruiter@</span><span id='label-hostname'>sangnguyenresume</span> <span id='label-path'>[~]</span> <span id='label-splitter'>$</span></span>";
+import { curentUser } from "./system.js";
+
+export const labelString = `<span id="label-string"><span id="label-user">${curentUser.username}@</span><span id="label-hostname">sangnguyenresume</span> <span id="label-path">[~]</span> <span id="label-splitter">$</span></span>`;
 
 export const playground = document.createElement("div");
 playground.id = "playground";
@@ -36,7 +37,6 @@ export const colorScheme = {
   Red: "#ff5555",
   Yellow: "#f1fa8c",
 };
-
 
 export const displayResult = (
   parentElement,
