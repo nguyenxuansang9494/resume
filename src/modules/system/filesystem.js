@@ -14,25 +14,25 @@ export function Node(isFile, name, parent, children, fileContent) {
 
 export const rootFolder = new Node(false, "", undefined, {}, undefined);
 const homeFolder = new Node(false, "home", rootFolder, {}, undefined);
-export const recruiterFolder = new Node(
+export const currentUserHomeFolder = new Node(
   false,
   "recruiter",
   homeFolder,
   {},
   undefined
 );
-homeFolder.children[recruiterFolder.name] = recruiterFolder;
+homeFolder.children[currentUserHomeFolder.name] = currentUserHomeFolder;
 rootFolder.children[homeFolder.name] = homeFolder;
 const cv = new Node(
   true,
   "resume.txt",
-  recruiterFolder,
+  currentUserHomeFolder,
   undefined,
   "Name: Sang Nguyen"
 );
-recruiterFolder.children[cv.name] = cv;
-export let workingDirectory = recruiterFolder;
+currentUserHomeFolder.children[cv.name] = cv;
+export let workingDirectory = currentUserHomeFolder;
 
 export const changeWorkingDir = (dir) => {
   workingDirectory = dir;
-}
+};

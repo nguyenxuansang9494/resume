@@ -3,7 +3,7 @@ import { Exception } from "../../exception/exception.js";
 import { handleFileNotFound } from "../../handler/filenotfound.js";
 import {
   changeWorkingDir,
-  recruiterFolder,
+  currentUserHomeFolder,
   rootFolder,
   workingDirectory,
 } from "../../system/filesystem.js";
@@ -34,7 +34,7 @@ export const cd = (parsedCommand) => {
     return;
   }
   if (path.startsWith("~")) {
-    let curentDir = recruiterFolder;
+    let curentDir = currentUserHomeFolder;
     let parsedPath = path.split("/");
     for (let e of parsedPath) {
       isNotFound(curentDir, e, "~");
