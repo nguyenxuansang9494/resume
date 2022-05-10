@@ -19,6 +19,13 @@ export const functionMap = {
     }
     displayResult(executedCommands, path);
   },
+  ls: (parsedCommand) => {
+    if (parsedCommand.length == 1) {
+      for (let key in workingDirectory.children) {
+        displayResult(executedCommands, key);
+      }
+    }
+  },
   exit: () => {
     displayResult(executedCommands, "logout.");
     inputGroup.remove();
