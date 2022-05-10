@@ -1,12 +1,12 @@
 export const getCommand = (
   command,
-  functionMap,
+  commandMap,
   blankCommand,
   invalidCommand
 ) => {
   if (command.length == 0) return blankCommand;
   let parsedCommand = parseCommand(command);
-  if (functionMap[parsedCommand[0]]) return () => functionMap[command](parsedCommand);
+  if (commandMap[parsedCommand[0]]) return () => commandMap[parsedCommand[0]](parsedCommand);
   else return () => invalidCommand(parsedCommand[0]);
 };
 

@@ -32,3 +32,7 @@ const cv = new Node(
 );
 recruiterFolder.children[cv.name] = cv;
 export let workingDirectory = recruiterFolder;
+
+export const changeWorkingDir = (dir) => {
+  workingDirectory = dir;
+}

@@ -9,7 +9,7 @@ import {
 } from "./modules/render.js";
 
 import {
-  functionMap,
+  commandMap,
   blankCommand,
   invalidCommand,
 } from "./modules/command.js";
@@ -37,7 +37,7 @@ input.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     e.preventDefault();
     displayResult(executedCommands, `${labelString + " " + input.innerText}`);
-    getCommand(input.innerText, functionMap, blankCommand, invalidCommand)();
+    getCommand(input.innerText, commandMap, blankCommand, invalidCommand)();
     input.innerText = "";
   }
 });
