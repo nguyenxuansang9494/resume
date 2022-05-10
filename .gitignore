@@ -1,1 +1,3 @@
 *.css.map
+package*.json
+node_modules
