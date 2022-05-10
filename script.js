@@ -1,6 +1,5 @@
 let workingDirectory = "/home/resume";
 
-
 /*-------------create html element here------------------*/
 const labelString =
   "<span style='font-weight: bold;'>recruiter@sangnguyenresume [~] $</span>";
@@ -22,7 +21,6 @@ input.contentEditable = true;
 input.className = "text-format";
 /*-------------------------------------------------------*/
 
-
 window.addEventListener("load", () => {
   const app = document.getElementById("app");
   inputGroup.append(label, input);
@@ -30,12 +28,17 @@ window.addEventListener("load", () => {
   app.append(playground);
 });
 
-const displayResult = (content, style = {}) => {
+const displayResult = (
+  content,
+  style = {
+    display: "block",
+    marginBottom: "2px",
+    marginTop: "0px",
+  }
+) => {
   let p = document.createElement("p");
   p.innerHTML = content;
-  p.style.display = "block";
-  p.style.marginBottom = "2px";
-  p.style.marginTop = "0px";
+  Object.assign(p.style, style);
   executedCommands.append(p);
 };
 
@@ -69,7 +72,7 @@ const getCommand = (command) => {
 
 const parseCommand = (aString) => {
   return aString.split(" ");
-}
+};
 
 document.addEventListener("click", () => {
   input.focus();
