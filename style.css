@@ -28,11 +28,11 @@
   font-size: large;
   background-color: #282a36;
   color: #f8f8f2;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #label-string {
-  font-weight: bolder;
+  font-weight: 800;
 }
 
 #label-user {
@@ -45,5 +45,9 @@
 
 #label-path {
   color: #50fa7b;
+}
+
+#label-splitter {
+  color: #ffb86c;
 }
 /*# sourceMappingURL=style.css.map */

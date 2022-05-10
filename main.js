@@ -14,9 +14,11 @@ window.addEventListener("load", () => {
   inputGroup.append(label, input);
   playground.append(executedCommands, inputGroup);
   app.append(playground);
+  displayResult(executedCommands, "Try help command for more details.")
+  displayResult(executedCommands,"...")
 });
 
-const displayResult = (
+const displayResult = (parentElement,
   content,
   style = {
     display: "block",
@@ -27,7 +29,7 @@ const displayResult = (
   let p = document.createElement("p");
   p.innerHTML = content;
   Object.assign(p.style, style);
-  executedCommands.append(p);
+  parentElement.append(p);
 };
 
 const getCommand = (command) => {
@@ -36,22 +38,22 @@ const getCommand = (command) => {
       executedCommands.innerHTML = "";
     },
     help: () => {
-      displayResult("These commands are supported:")
+      displayResult(executedCommands,"These commands are supported:")
       for (let key in functionMap) {
-        displayResult(`- ${key}`);
+        displayResult(executedCommands,`- ${key}`);
       }
     },
     pwd: () => {
-      displayResult(workingDirectory);
+      displayResult(executedCommands, workingDirectory);
     },
     exit: () => {
-      displayResult("logout.");
+      displayResult(executedCommands, "logout.");
       inputGroup.remove();
     },
   };
   const blankCommand = () => {};
   const invalidCommand = () => {
-    return displayResult(`zsh: command not found: ${command}`);
+    return displayResult(executedCommands,`zsh: command not found: ${command}`);
   };
   if (command.length == 0) return blankCommand;
   if (functionMap[command]) return functionMap[command];
@@ -69,7 +71,7 @@ document.addEventListener("click", () => {
 input.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     e.preventDefault();
-    displayResult(`${labelString + " " + input.innerText}`);
+    displayResult(executedCommands,`${labelString + " " + input.innerText}`);
     getCommand(parseCommand(input.innerText)[0])();
     input.innerText = "";
   }
