@@ -1,6 +1,9 @@
+let workingDirectory = "/home/resume";
+
+
+/*-------------create html element here------------------*/
 const labelString =
   "<span style='font-weight: bold;'>recruiter@sangnguyenresume [~] $</span>";
-let workingDirectory = "/home/resume";
 const playground = document.createElement("div");
 playground.id = "playground";
 const executedCommands = document.createElement("div");
@@ -17,6 +20,8 @@ input.style.marginLeft = "10px";
 input.id = "input";
 input.contentEditable = true;
 input.className = "text-format";
+/*-------------------------------------------------------*/
+
 
 window.addEventListener("load", () => {
   const app = document.getElementById("app");
@@ -48,6 +53,11 @@ const getCommand = (command) => {
       return () => {
         displayResult(workingDirectory);
       };
+    case "exit":
+      return () => {
+        displayResult("logout.");
+        inputGroup.remove();
+      };
     case "":
       return () => {};
     default:
@@ -57,6 +67,10 @@ const getCommand = (command) => {
   }
 };
 
+const parseCommand = (aString) => {
+  return aString.split(" ");
+}
+
 document.addEventListener("click", () => {
   input.focus();
 });
@@ -65,7 +79,7 @@ input.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     e.preventDefault();
     displayResult(`${labelString + " " + input.innerText}`);
-    getCommand(input.innerText)();
+    getCommand(parseCommand(input.innerText)[0])();
     input.innerText = "";
   }
 });
