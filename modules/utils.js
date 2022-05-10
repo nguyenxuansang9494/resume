@@ -5,8 +5,9 @@ export const getCommand = (
   invalidCommand
 ) => {
   if (command.length == 0) return blankCommand;
-  if (functionMap[command]) return functionMap[command];
-  else return () => invalidCommand(command);
+  let parsedCommand = parseCommand(command);
+  if (functionMap[parsedCommand[0]]) return () => functionMap[command](parsedCommand);
+  else return () => invalidCommand(parsedCommand[0]);
 };
 
 export const parseCommand = (aString) => {

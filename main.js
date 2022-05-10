@@ -37,7 +37,7 @@ input.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     e.preventDefault();
     displayResult(executedCommands, `${labelString + " " + input.innerText}`);
-    getCommand(parseCommand(input.innerText)[0], functionMap, blankCommand, invalidCommand)();
+    getCommand(input.innerText, functionMap, blankCommand, invalidCommand)();
     input.innerText = "";
   }
 });

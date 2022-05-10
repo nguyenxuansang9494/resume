@@ -1,5 +1,5 @@
 import { workingDirectory } from "./filesystem.js";
-import {displayResult, executedCommands, inputGroup} from "./render.js"
+import { displayResult, executedCommands, inputGroup } from "./render.js";
 export const functionMap = {
   clear: () => {
     executedCommands.innerHTML = "";
@@ -11,7 +11,13 @@ export const functionMap = {
     }
   },
   pwd: () => {
-    displayResult(executedCommands, workingDirectory);
+    let path = workingDirectory.name;
+    let curentDir = workingDirectory;
+    while (curentDir.parent) {
+      path = `${curentDir.parent.name}/` + path;
+      curentDir = curentDir.parent;
+    }
+    displayResult(executedCommands, path);
   },
   exit: () => {
     displayResult(executedCommands, "logout.");
