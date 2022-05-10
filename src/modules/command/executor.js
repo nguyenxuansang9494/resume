@@ -1,6 +1,6 @@
-import { commandMap, invalidCommand, blankCommand } from "./command.js";
+import { commandMap, invalidCommand, blankCommand } from "./commandmapper.js";
 import { parseCommand } from "../util/utils.js";
-export const navigate = (command) => {
+export const execute = (command) => {
   if (command.length == 0) return blankCommand;
   let parsedCommand = parseCommand(command);
   if (commandMap[parsedCommand[0]])
