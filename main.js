@@ -6,18 +6,11 @@ import {
   labelString,
   playground,
   displayResult
-} from "./modules/render.js";
+} from "./modules/ui/render.js";
 
 import {
-  commandMap,
-  blankCommand,
-  invalidCommand,
-} from "./modules/command.js";
-
-import {
-  getCommand,
-  parseCommand
-} from "./modules/utils.js"
+  navigate
+} from "./modules/command/navigator.js";
 
 window.addEventListener("load", () => {
   const app = document.getElementById("app");
@@ -37,7 +30,7 @@ input.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     e.preventDefault();
     displayResult(executedCommands, `${labelString + " " + input.innerText}`);
-    getCommand(input.innerText, commandMap, blankCommand, invalidCommand)();
+    navigate(input.innerText)();
     input.innerText = "";
   }
 });

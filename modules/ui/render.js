@@ -1,4 +1,4 @@
-import { curentUser } from "./system.js";
+import { curentUser } from "../system/system.js";
 
 export const labelString = `<span id="label-string"><span id="label-user">${curentUser.username}@</span><span id="label-hostname">sangnguyenresume</span> <span id="label-path">[~]</span> <span id="label-splitter">$</span></span>`;
 

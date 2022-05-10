@@ -2,8 +2,8 @@ import {
   workingDirectory,
   rootFolder,
   changeWorkingDir,
-} from "./filesystem.js";
-import { displayResult, executedCommands, inputGroup } from "./render.js";
+} from "../system/filesystem.js";
+import { displayResult, executedCommands, inputGroup } from "../ui/render.js";
 export const commandMap = {
   clear: () => {
     executedCommands.innerHTML = "";
