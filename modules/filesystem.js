@@ -1,5 +1,1 @@
-const helloWorld = () => {
-  alert("Hello, World");
-};
-
-export {helloWorld};
+export let workingDirectory = "/home/resume";

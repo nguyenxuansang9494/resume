@@ -1,25 +1,13 @@
-let workingDirectory = "/home/resume";
+import {
+  executedCommands,
+  input,
+  inputGroup,
+  label,
+  labelString,
+  playground,
+} from "./modules/htmlelement.js";
 
-/*-------------create html element here------------------*/
-const labelString =
-  "<span style='font-weight: bold;'>recruiter@sangnguyenresume [~] $</span>";
-const playground = document.createElement("div");
-playground.id = "playground";
-const executedCommands = document.createElement("div");
-executedCommands.id = "executed-commands";
-executedCommands.className = "text-format";
-const inputGroup = document.createElement("div");
-inputGroup.id = "input-group";
-const label = document.createElement("p");
-label.id = "label";
-label.className = "text-format";
-label.innerHTML = labelString;
-const input = document.createElement("div");
-input.style.marginLeft = "10px";
-input.id = "input";
-input.contentEditable = true;
-input.className = "text-format";
-/*-------------------------------------------------------*/
+import { workingDirectory } from "./modules/filesystem.js";
 
 window.addEventListener("load", () => {
   const app = document.getElementById("app");
