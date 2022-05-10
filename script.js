@@ -23,18 +23,9 @@ const getCommand = (command) => {
       return () => {
         return displayResult("why don't try neofetch?");
       };
-    case "neofetch":
-      return () => {
-        displayResult("Name: Sang Xuan Nguyen");
-      };
     case "pwd":
       return () => {
         displayResult(workingDirectory);
-      };
-    case "exit":
-      return () => {
-        displayResult("logout.");
-        inputGroup.remove();
       };
     case "":
       return () => {};
