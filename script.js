@@ -65,7 +65,7 @@ const getCommand = (command) => {
       return () => {};
     default:
       return () => {
-        return displayResult("Invalid command.");
+        return displayResult(`zsh: command not found: ${command}`);
       };
   }
 };
