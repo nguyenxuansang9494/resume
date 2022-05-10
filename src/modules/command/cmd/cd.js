@@ -1,6 +1,5 @@
-import { FILE_NOT_FOUND, PARENT_NOT_FOUND } from "../../exception/const.js";
+import { FILE_NOT_FOUND } from "../../exception/const.js";
 import { Exception } from "../../exception/exception.js";
-import { handleFileNotFound } from "../../handler/filenotfound.js";
 import {
   changeWorkingDir,
   currentUserHomeFolder,
@@ -22,7 +21,7 @@ export const cd = (parsedCommand) => {
   }
   if (path.startsWith("..")) {
     if (workingDirectory == rootFolder) {
-      throw new Exception(PARENT_NOT_FOUND);
+      return;
     }
     let curentDir = workingDirectory.parent;
     let parsedPath = path.split("/");
