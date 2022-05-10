@@ -30,4 +30,20 @@
   color: #f8f8f2;
   font-weight: bold;
 }
+
+#label-string {
+  font-weight: bolder;
+}
+
+#label-user {
+  color: #8be9fd;
+}
+
+#label-hostname {
+  color: #ff79c6;
+}
+
+#label-path {
+  color: #50fa7b;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1,5 +1,5 @@
 export const labelString =
-  "<span style='font-weight: bold;'>recruiter@sangnguyenresume [~] $</span>";
+  "<span id='label-string'><span id='label-user'>recruiter@</span><span id='label-hostname'>sangnguyenresume</span> <span id='label-path'>[~]</span> $</span>";
 
 export const playground = document.createElement("div");
 playground.id = "playground";

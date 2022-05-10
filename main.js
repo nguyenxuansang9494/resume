@@ -31,31 +31,31 @@ const displayResult = (
 };
 
 const getCommand = (command) => {
-  switch (command) {
-    case "clear":
-      return () => {
-        executedCommands.innerHTML = "";
-      };
-    case "help":
-      return () => {
-        return displayResult("why don't try neofetch?");
-      };
-    case "pwd":
-      return () => {
-        displayResult(workingDirectory);
-      };
-    case "exit":
-      return () => {
-        displayResult("logout.");
-        inputGroup.remove();
-      };
-    case "":
-      return () => {};
-    default:
-      return () => {
-        return displayResult(`zsh: command not found: ${command}`);
-      };
-  }
+  const functionMap = {
+    clear: () => {
+      executedCommands.innerHTML = "";
+    },
+    help: () => {
+      displayResult("These commands are supported:")
+      for (let key in functionMap) {
+        displayResult(`- ${key}`);
+      }
+    },
+    pwd: () => {
+      displayResult(workingDirectory);
+    },
+    exit: () => {
+      displayResult("logout.");
+      inputGroup.remove();
+    },
+  };
+  const blankCommand = () => {};
+  const invalidCommand = () => {
+    return displayResult(`zsh: command not found: ${command}`);
+  };
+  if (command.length == 0) return blankCommand;
+  if (functionMap[command]) return functionMap[command];
+  else return invalidCommand;
 };
 
 const parseCommand = (aString) => {
