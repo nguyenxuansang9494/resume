@@ -1,5 +1,9 @@
+#app {
+  background-color: #282a36;
+}
+
 #playground {
-  background-color: #000000;
+  background-color: #282a36;
 }
 
 #input {
@@ -22,6 +26,8 @@
 .text-format {
   font-family: "Courier New", Courier, monospace;
   font-size: large;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #282a36;
+  color: #f8f8f2;
+  font-weight: bold;
 }
+/*# sourceMappingURL=style.css.map */
