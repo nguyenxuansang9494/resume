@@ -1,5 +1,6 @@
-import { workingDirectory } from "../../system/filesystem.js";
+import { workingDirectory } from "../../system/filesystem/workingdir.js";
 import { displayResult, executedCommands } from "../../ui/render.js";
+
 
 export const ls = (parsedCommand) => {
   if (parsedCommand.length == 1) {

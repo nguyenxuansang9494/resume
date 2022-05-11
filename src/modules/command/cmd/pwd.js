@@ -1,5 +1,6 @@
-import { workingDirectory } from "../../system/filesystem.js";
-import { displayResult } from "../../ui/render.js";
+import { workingDirectory } from "../../system/filesystem/workingdir.js";
+import { executedCommands, displayResult } from "../../ui/render.js";
+
 
 export const pwd = () => {
   let path = workingDirectory.name;

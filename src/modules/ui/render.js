@@ -1,6 +1,7 @@
+import { workingDirectory } from "../system/filesystem/workingdir.js";
 import { curentUser } from "../system/system.js";
 
-export const labelString = `<span id="label-string"><span id="label-user">${curentUser.username}@</span><span id="label-hostname">sangnguyenresume</span> <span id="label-path">[~]</span> <span id="label-splitter">$</span></span>`;
+export const labelString = `<span id="label-string"><span id="label-user">${curentUser.username}@</span><span id="label-hostname">sangnguyenresume</span> <span id="label-path">[${workingDirectory.name == "" ? "/" : workingDirectory.name}]</span> <span id="label-splitter">$</span></span>`;
 
 export const playground = document.createElement("div");
 playground.id = "playground";
@@ -23,20 +24,6 @@ input.id = "input";
 input.contentEditable = true;
 input.className = "text-format";
 
-export const colorScheme = {
-  Background: "#282a36",
-  CurrentLine: "#44475a",
-  Selection: "#44475a",
-  Foreground: "#f8f8f2",
-  Comment: "#6272a4",
-  Cyan: "#8be9fd",
-  Green: "#50fa7b",
-  Orange: "#ffb86c",
-  Pink: "#ff79c6",
-  Purple: "#bd93f9",
-  Red: "#ff5555",
-  Yellow: "#f1fa8c",
-};
 
 export const displayResult = (
   parentElement,

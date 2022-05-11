@@ -1,11 +1,13 @@
 import { FILE_NOT_FOUND } from "../../exception/const.js";
 import { Exception } from "../../exception/exception.js";
 import {
-  changeWorkingDir,
   currentUserHomeFolder,
   rootFolder,
+} from "../../system/filesystem/init.js";
+import {
+  changeWorkingDir,
   workingDirectory,
-} from "../../system/filesystem.js";
+} from "../../system/filesystem/workingdir.js";
 
 export const cd = (parsedCommand) => {
   let path = parsedCommand[1] == undefined ? "~" : parsedCommand[1];
