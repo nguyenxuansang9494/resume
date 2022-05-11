@@ -1,4 +1,4 @@
-import { displayResult, executedCommands, inputGroup } from "../ui/render.js";
+import { displayResult, executedCommands } from "../ui/render.js";
 import { cat } from "./cmd/cat.js";
 import { cd } from "./cmd/cd.js";
 import { clear } from "./cmd/clear.js";

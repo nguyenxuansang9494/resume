@@ -8,8 +8,8 @@ import {
   displayResult,
 } from "./ui/render.js";
 
-import { execute } from "./command/executor.js";
-import { navigate } from "./handler/navigator.js";
+import { resolveCommand } from "./command/resolver.js";
+import { resolveHandler } from "./handler/resolver.js";
 
 export const init = () => {
   window.addEventListener("load", () => {
@@ -33,9 +33,9 @@ export const init = () => {
           executedCommands,
           `${labelString + " " + input.innerText}`
         );
-        execute(input.innerText)();
+        resolveCommand(input.innerText)();
       } catch (error) {
-        navigate(error);
+        resolveHandler(error);
       } finally {
         input.innerText = "";
       }

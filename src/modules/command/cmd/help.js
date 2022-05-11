@@ -1,4 +1,4 @@
-import { commandMap } from "../commandmapper.js";
+import { commandMap } from "../cmdmapper.js";
 import { executedCommands, displayResult } from "../../ui/render.js";
 
 export const help = () => {
