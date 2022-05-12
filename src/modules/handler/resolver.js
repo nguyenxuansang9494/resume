@@ -1,5 +1,5 @@
 import { FILE_NOT_FOUND} from "../exception/const.js";
-import { handleFileNotFound } from "./filenotfound.js";
+import { handleFileNotFound } from "./filenotfoundhandler.js";
 import { handle } from "./generichandler.js";
 
 export const resolveHandler = (e) => {
