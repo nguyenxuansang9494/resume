@@ -1,4 +1,4 @@
-export function Ownership(owner, permissions) {
+export function Ownership(owner, permissionGroup) {
   this.owner = owner;
-  this.permissions = permissions;
+  this.permissionGroup = permissionGroup;
 }

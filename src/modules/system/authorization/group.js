@@ -1,4 +1,4 @@
-export function Group(name, users) {
+export function Group(name, members) {
     this.name = name
-    this.users = users
+    this.members = members
 }

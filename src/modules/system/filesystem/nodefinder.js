@@ -1,52 +1,53 @@
 import { rootFolder, currentUserHomeFolder } from "./init.js";
 import { workingDirectory } from "./workingdir.js";
-import { FILE_NOT_FOUND } from "../../exception/const.js";
+import { FILE_NOT_FOUND, PERMISSION_DENIED } from "../../exception/const.js";
 import { Exception } from "../../exception/exception.js";
+import { curentUser } from "../authorization/init.js";
+import { split } from "../../util/utils.js";
+import { EXECUTE } from "../authorization/permission.js";
 
 export const getFileSystemNode = (path) => {
+  let currentNode = workingDirectory;
+  let parsedPath = split(path, "/", { "": 1, ".": 1 });
   if (path.startsWith("/")) {
-    let currentNode = rootFolder;
-    let parsedPath = path.split("/");
-    for (let e of parsedPath) {
-      isNotFound(currentNode, e, "");
-      currentNode = e.length > 0 ? currentNode.children[e] : currentNode;
-    }
-    return currentNode;
+    currentNode = rootFolder;
+    parsedPath = split(path, "/", { "": 1 });
   }
   if (path.startsWith("..")) {
     if (workingDirectory == rootFolder) {
-      return;
+      return rootFolder;
     }
-    let currentNode = workingDirectory.parent;
-    let parsedPath = path.split("/");
-    for (let e of parsedPath) {
-      isNotFound(currentNode, e, "..");
-      currentNode =
-        e.length > 0 && e != ".." ? currentNode.children[e] : currentNode;
-    }
-    return currentNode;
+    currentNode = workingDirectory.parent;
+    parsedPath = split(path, "/", { "": 1, "..": 1 });
   }
   if (path.startsWith("~")) {
-    let currentNode = currentUserHomeFolder;
-    let parsedPath = path.split("/");
-    for (let e of parsedPath) {
-      isNotFound(currentNode, e, "~");
-      currentNode =
-        e.length > 0 && e != "~" ? currentNode.children[e] : currentNode;
-    }
-    return currentNode;
+    currentNode = currentUserHomeFolder;
+    parsedPath = split(path, "/", { "": 1, "~": 1 });
   }
-  let currentNode = workingDirectory;
-  let parsedPath = path.split("/");
+  isAccessible(currentNode);
   for (let e of parsedPath) {
-    isNotFound(currentNode, e, ".");
-    currentNode = e.length > 0 && e != "." ? currentNode.children[e] : currentNode;
+    isAccessible(currentNode.children[e]);
+    isNotFound(currentNode, e);
+    currentNode = currentNode.children[e];
   }
   return currentNode;
 };
 
-const isNotFound = (dir, fileName, exclude) => {
-  if (!dir.children[fileName] && fileName != exclude && fileName != "") {
+const isAccessible = (currentNode) => {
+  let executePermission = currentNode.otherOwnership.permissionGroup[EXECUTE];
+  if (currentNode.groupOwnership.owner.members.includes(curentUser)) {
+    executePermission = currentNode.groupOwnership.permissionGroup[EXECUTE];
+  }
+  if (currentNode.userOwnership.owner == curentUser) {
+    executePermission = currentNode.userOwnership.permissionGroup[EXECUTE];
+  }
+  if (!executePermission.enable) {
+    throw new Exception(PERMISSION_DENIED, { node: currentNode });
+  }
+};
+
+const isNotFound = (dir, fileName) => {
+  if (!dir.children[fileName]) {
     throw new Exception(FILE_NOT_FOUND, { fileName: fileName });
   }
 };
