@@ -12,6 +12,7 @@ import { rm } from "./cmd/rm.js";
 import { rmdir } from "./cmd/rmdir.js";
 import { showmeyourcode } from "./cmd/showmeyourcode.js";
 import { touch } from "./cmd/touch.js";
+import { whoami } from "./cmd/whoami.js";
 export const commandMap = {
   cat: cat,
   cd: cd,
@@ -26,6 +27,7 @@ export const commandMap = {
   rmdir: rmdir,
   showmeyourcode: showmeyourcode,
   touch: touch,
+  whoami: whoami
 };
 export const blankCommand = () => {};
 export const invalidCommand = (command) => {
