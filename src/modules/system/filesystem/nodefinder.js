@@ -1,5 +1,7 @@
 import { rootFolder, currentUserHomeFolder } from "./init.js";
 import { workingDirectory } from "./workingdir.js";
+import { FILE_NOT_FOUND } from "../../exception/const.js";
+import { Exception } from "../../exception/exception.js";
 
 export const getFileSystemNode = (path) => {
   if (path.startsWith("/")) {
