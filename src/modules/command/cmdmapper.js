@@ -2,6 +2,7 @@ import { displayResult, executedCommands } from "../ui/render.js";
 import { cat } from "./cmd/cat.js";
 import { cd } from "./cmd/cd.js";
 import { clear } from "./cmd/clear.js";
+import { echo } from "./cmd/echo.js";
 import { exit } from "./cmd/exit.js";
 import { help } from "./cmd/help.js";
 import { ls } from "./cmd/ls.js";
@@ -15,6 +16,7 @@ export const commandMap = {
   cat: cat,
   cd: cd,
   clear: clear,
+  echo: echo,
   exit: exit,
   help: help,
   ls: ls,
