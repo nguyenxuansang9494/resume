@@ -5,44 +5,44 @@ import { Exception } from "../../exception/exception.js";
 
 export const getFileSystemNode = (path) => {
   if (path.startsWith("/")) {
-    let currentDir = rootFolder;
+    let currentNode = rootFolder;
     let parsedPath = path.split("/");
     for (let e of parsedPath) {
-      isNotFound(currentDir, e, "");
-      currentDir = e.length > 0 ? currentDir.children[e] : currentDir;
+      isNotFound(currentNode, e, "");
+      currentNode = e.length > 0 ? currentNode.children[e] : currentNode;
     }
-    return currentDir;
+    return currentNode;
   }
   if (path.startsWith("..")) {
     if (workingDirectory == rootFolder) {
       return;
     }
-    let currentDir = workingDirectory.parent;
+    let currentNode = workingDirectory.parent;
     let parsedPath = path.split("/");
     for (let e of parsedPath) {
-      isNotFound(currentDir, e, "..");
-      currentDir =
-        e.length > 0 && e != ".." ? currentDir.children[e] : currentDir;
+      isNotFound(currentNode, e, "..");
+      currentNode =
+        e.length > 0 && e != ".." ? currentNode.children[e] : currentNode;
     }
-    return currentDir;
+    return currentNode;
   }
   if (path.startsWith("~")) {
-    let currentDir = currentUserHomeFolder;
+    let currentNode = currentUserHomeFolder;
     let parsedPath = path.split("/");
     for (let e of parsedPath) {
-      isNotFound(currentDir, e, "~");
-      currentDir =
-        e.length > 0 && e != "~" ? currentDir.children[e] : currentDir;
+      isNotFound(currentNode, e, "~");
+      currentNode =
+        e.length > 0 && e != "~" ? currentNode.children[e] : currentNode;
     }
-    return currentDir;
+    return currentNode;
   }
-  let currentDir = workingDirectory;
+  let currentNode = workingDirectory;
   let parsedPath = path.split("/");
   for (let e of parsedPath) {
-    isNotFound(currentDir, e, ".");
-    currentDir = e.length > 0 && e != "." ? currentDir.children[e] : currentDir;
+    isNotFound(currentNode, e, ".");
+    currentNode = e.length > 0 && e != "." ? currentNode.children[e] : currentNode;
   }
-  return currentDir;
+  return currentNode;
 };
 
 const isNotFound = (dir, fileName, exclude) => {
