@@ -1,4 +1,3 @@
-import { displayResult, executedCommands } from "../ui/render.js";
 import { cat } from "./cmd/cat.js";
 import { cd } from "./cmd/cd.js";
 import { clear } from "./cmd/clear.js";
@@ -28,8 +27,4 @@ export const commandMap = {
   showmeyourcode: showmeyourcode,
   touch: touch,
   whoami: whoami
-};
-export const blankCommand = () => {};
-export const invalidCommand = (command) => {
-  return displayResult(executedCommands, `zsh: command not found: ${command}`);
 };
