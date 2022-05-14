@@ -24,16 +24,16 @@ export const getFileSystemNode = (path) => {
     currentNode = currentUserHomeFolder;
     parsedPath = split(path, "/", { "": 1, "~": 1 });
   }
-  isAccessible(currentNode);
+  isExcutable(currentNode);
   for (let e of parsedPath) {
-    isAccessible(currentNode.children[e]);
+    isExcutable(currentNode.children[e]);
     isNotFound(currentNode, e);
     currentNode = currentNode.children[e];
   }
   return currentNode;
 };
 
-const isAccessible = (currentNode) => {
+const isExcutable = (currentNode) => {
   let executePermission = currentNode.otherOwnership.permissionGroup[EXECUTE];
   if (currentNode.groupOwnership.owner.members.includes(curentUser)) {
     executePermission = currentNode.groupOwnership.permissionGroup[EXECUTE];
